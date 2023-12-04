@@ -1,0 +1,149 @@
+{% load static %}
+
+{% block styles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zerodha Sign Up</title>
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-image: url('{% static "bgimage.jpg" %}');
+            background-size: cover;
+            background-position: center;
+            color: #333;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color:transparent;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-left: -100px;
+            margin-right: 100px;
+        }
+
+        .logo img {
+            width: 100px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            color: #98bd11;
+            font-family: 'Pacifico', cursive;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #E6E6E6;
+            color: #333;
+        }
+
+        button {
+            width: 100%;
+            background-color: #98bd11;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #98bd11;
+        }
+
+        p {
+            margin-top: 15px;
+        }
+
+        a {
+            color: #0073e6; /* Sky Blue */
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+        .register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+        }
+        .card {
+    max-width: 400px;
+  }
+  .card-header {
+    background-color: #007bff;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+  }
+  .card-body {
+    padding: 30px;
+  }
+  .alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #f5c6cb;
+    border-radius: 4px;
+  }
+</style>
+</head>
+{% endblock %}
+
+{% block content %}
+<div class="register-container">
+  <div class="card">
+    <div class="card-body">
+<body>
+    <div class="container" id="signup">
+        <h1>Sip, Savor, Signup!</h1>
+        {% if error_message %}
+        <div class="alert alert-danger" role="alert">{{ error_message }}</div>
+        {% endif %}
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="full_name">Email</label>
+                <input type="email" class="form-control" id="full_name" name="full_name" required>
+                <label for="username">Username</label>
+                <input type="text" class="form-control" id="username" name="username" required>
+                <label for="password1">Password</label>
+                <input type="password" class="form-control" id="password1" name="password1" required>
+                <label for="password2">Confirm Password</label>
+                <input type="password" class="form-control" id="password2" name="password2" required>
+            </div>
+            <button type="submit">Sign Up</button>
+        </form>
+        <p>Already have an account? <a href="/resto/login/">Log In</a></p>
+    </div>
+{% endblock %}
+</body>
+</html>

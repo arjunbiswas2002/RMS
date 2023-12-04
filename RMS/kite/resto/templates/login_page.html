@@ -1,0 +1,450 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Resto</title>
+<style>
+          .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.75s, visibility 0.75s;
+
+        }
+        .loader--hidden {
+            opacity: 0;
+            visibility: hidden;
+
+        }
+
+        .loader::after{
+            content: "";
+            width: 75px;
+            height: 75px;
+            border: 15px solid #dddddd;
+            border-top-color: #009578;
+            border-radius: 50%;
+            animation: loading 0.75s ease infinite;
+
+        }
+
+        @keyframes loading {
+            from { transform: rotate(0turn) }
+            to { transform: rotate(1turn) }
+        }
+        .c1{
+            color: #dddddd;
+        }
+        #id_content {
+        background-color: #777777;
+        color: white;
+    }
+    body {
+            font-family: Arial, sans-serif;
+            background-color: #FFFFFF33;
+        }
+
+        .form-container {
+            width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #FFFFFF33;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            margin-bottom: 10px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            color: #777777;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+</style>
+<meta name="description" content="">
+<meta name="author" content="">
+
+<!-- Favicons
+    ================================================== -->
+<link rel="shortcut icon" href="/static/img/favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="/static/img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/static/img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/static/img/apple-touch-icon-114x114.png">
+
+<!-- Bootstrap -->
+<link rel="stylesheet" type="text/css"  href="/static/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="/static/fonts/font-awesome/css/font-awesome.css">
+
+<!-- Stylesheet
+    ================================================== -->
+<link rel="stylesheet" type="text/css"  href="/static/css/style.css">
+<link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Rochester" rel="stylesheet">
+
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+<!-- Navigation
+    ==========================================-->
+<nav id="menu" class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="loader"></div>
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+            <li>{% include 'nav.html' %}
+
+            </li>
+            <li><a href="#features">Specials</a></li>
+            <li><a href="#about" class="page-scroll">About</a></li>
+            <li><a href="#restaurant-menu" class="page-scroll">Menu</a></li>
+            <li><a href="/resto/message/">Contact</a></li>
+            <li>
+                {% include 'base.html' %}
+                <div>
+                  {% block content %}{% endblock %}
+                </div>
+            </li>
+        </ul>
+    </div>
+    <!-- /.navbar-collapse -->
+  </div>
+</nav>
+<!-- Header -->
+<header id="header">
+  <div class="intro">
+    <div class="overlay">
+      <div class="container">
+        <div class="row">
+          <div class="intro-text">
+            <h1>Resto</h1>
+            <p><a class="c1" href="/resto/booking/">FOR RESERVATIONS</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- Features Section -->
+<div id="features" class="text-center">
+  <div class="container">
+    <div class="section-title">
+      <h2>Our Specials</h2>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-4">
+        <div class="features-item">
+          <h3>Truffle-infused Wild Mushroom Risotto</h3>
+          <img src="/static/img/specials/1.jpg" class="img-responsive" alt="">
+          <p>Elevate your dining experience with our luxurious Truffle-infused Wild Mushroom Risotto. </p>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-4">
+        <div class="features-item">
+          <h3>Maple Pecan Pancake Stack</h3>
+          <img src="/static/img/specials/2.jpg" class="img-responsive" alt="">
+          <p>Fluffy pancakes drizzled with rich maple syrup and adorned with a generous sprinkling of toasted pecans. </p>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-4">
+        <div class="features-item">
+          <h3>Chai-spiced Chocolate Mousse:</h3>
+          <img src="/static/img/specials/3.jpg" class="img-responsive" alt="">
+          <p>Silky smooth chocolate mousse infused with warm chai spices, creating a harmonious blend of flavors.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- About Section -->
+<div id="about">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12 col-md-6 about-img"> </div>
+      <div class="col-xs-12 col-md-3 col-md-offset-1">
+        <div class="about-text">
+          <div class="section-title">
+            <h2>Our Story</h2>
+          </div>
+          <p> Welcome to [Your Cafe's Name], a culinary haven born from a shared passion for exceptional food and warm connections. Our story is one of dedication to crafting an inviting space where every dish is a chapter in a delightful journey</p>
+          <p> From carefully sourced ingredients to a welcoming ambiance, we invite you to experience the art of good food and the joy it brings. Join us at [Your Cafe's Name], where each visit is a new chapter in our shared narrative—a place where flavor and feeling come together, creating moments that linger long after the last bite.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Restaurant Menu Section -->
+<div id="restaurant-menu">
+  <div class="container">
+    <div class="section-title text-center">
+      <h2>Menu</h2>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-6">
+        <div class="menu-section">
+          <h2 class="menu-section-title">Breakfast & Starters</h2>
+          <div class="menu-item">
+            <div class="menu-item-name">Avocado Toast with Smoked Salmon</div>
+            <div class="menu-item-price"> $9 </div>
+            <div class="menu-item-description"> A classic favorite, our avocado toast is topped with creamy mashed avocado, a sprinkle of sea salt, and a generous serving of smoked salmon. </div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-name">Caprese Panini</div>
+            <div class="menu-item-price"> $7 </div>
+            <div class="menu-item-description"> A mouthwatering Italian-inspired panini featuring fresh mozzarella, ripe tomatoes, and basil pesto pressed between golden slices of ciabatta bread.  </div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-name">Quinoa Salad with Grilled Chicken</div>
+            <div class="menu-item-price"> $9 </div>
+            <div class="menu-item-description"> Our quinoa salad is a hearty and healthy option, featuring a colorful medley of quinoa, mixed greens, cherry tomatoes, cucumber, feta cheese, and topped with succulent grilled chicken. </div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-name">Vegetarian Pad Thai:</div>
+            <div class="menu-item-price"> $10 </div>
+            <div class="menu-item-description"> A delicious and aromatic noodle dish with stir-fried rice noodles, tofu, bean sprouts, and peanuts, tossed in a flavorful tamarind-based sauce.  </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6">
+        <div class="menu-section">
+          <h2 class="menu-section-title">Main Course</h2>
+          <div class="menu-item">
+            <div class="menu-item-name">Grilled Salmon with Lemon-Dill Sauce</div>
+            <div class="menu-item-price"> $18 </div>
+            <div class="menu-item-description"> A savory and succulent grilled salmon fillet served with a refreshing lemon-dill sauce. Accompanied by a side of roasted sweet potatoes and sautéed green beans. </div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-name">Mushroom Risotto with Truffle Oil</div>
+            <div class="menu-item-price"> $20 </div>
+            <div class="menu-item-description">Indulge in the rich and creamy goodness of our mushroom risotto, enhanced with the earthy aroma of truffle oil.  </div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-name">Lemon Herb Chicken with Quinoa Pilaf</div>
+            <div class="menu-item-price"> $14 </div>
+            <div class="menu-item-description">Juicy, oven-roasted lemon herb chicken served with a side of fluffy quinoa pilaf, roasted vegetables, and a drizzle of herb-infused olive oil. </div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-name">Vegetable Curry with Basmati Rice</div>
+            <div class="menu-item-price"> $19 </div>
+            <div class="menu-item-description">A vibrant and aromatic vegetable curry featuring a medley of seasonal vegetables in a fragrant curry sauce </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-6">
+        <div class="menu-section">
+          <h2 class="menu-section-title">Dinner</h2>
+          <div class="menu-item">
+            <div class="menu-item-name">Baked Lemon Herb Cod</div>
+            <div class="menu-item-price"> $15 </div>
+            <div class="menu-item-description">Delight your taste buds with a light and flaky baked lemon herb cod. Served with a side of garlic-roasted potatoes and steamed asparagus. </div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-name">Pesto Pasta Primavera:</div>
+            <div class="menu-item-price"> $17 </div>
+            <div class="menu-item-description">A vibrant pasta dish featuring al dente noodles tossed in a basil pesto sauce, with an array of colorful sautéed vegetables </div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-name">Chicken Marsala with Wild Rice Pilaf:</div>
+            <div class="menu-item-price"> $18 </div>
+            <div class="menu-item-description">Savory chicken Marsala, featuring tender chicken breasts in a rich Marsala wine and mushroom sauce  </div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-name">Vegetarian Stuffed Bell Peppers</div>
+            <div class="menu-item-price"> $20 </div>
+            <div class="menu-item-description">Flavorful and nutritious bell peppers stuffed with a mix of quinoa, black beans, corn, and spices. </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6">
+        <div class="menu-section">
+          <h2 class="menu-section-title">Desserts</h2>
+          <div class="menu-item">
+            <div class="menu-item-name">Classic Tiramisu:</div>
+            <div class="menu-item-price"> $11 </div>
+            <div class="menu-item-description"> Indulge in the timeless delight of our classic tiramisu. Layers of coffee-soaked ladyfingers and mascarpone cream, dusted with cocoa powder, create a heavenly dessert experience</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-name">Molten Chocolate Lava Cake</div>
+            <div class="menu-item-price"> $14 </div>
+            <div class="menu-item-description">Satisfy your chocolate cravings with our molten chocolate lava cake. A warm and gooey chocolate center encased in a moist chocolate cake, served with a scoop of vanilla ice cream </div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-name">Fruit Tart with Vanilla Pastry Cream:</div>
+            <div class="menu-item-price"> $15 </div>
+            <div class="menu-item-description">A delightful fruit tart featuring a buttery, flaky crust filled with luscious vanilla pastry cream and topped with an assortment of fresh seasonal fruits. </div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-name">Caramel Pecan Cheesecake</div>
+            <div class="menu-item-price"> $18 </div>
+            <div class="menu-item-description">Treat yourself to a decadent caramel pecan cheesecake. A velvety cheesecake with a caramel swirl, studded with crunchy pecans, and set on a buttery graham cracker crust.  </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Gallery Section -->
+<div id="gallery">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-6 col-md-3">
+        <div class="gallery-item"> <img src="/static/img/gallery/01.jpg" class="img-responsive" alt=""></div>
+      </div>
+      <div class="col-xs-6 col-md-3">
+        <div class="gallery-item"> <img src="/static/img/gallery/02.jpg" class="img-responsive" alt=""></div>
+      </div>
+      <div class="col-xs-6 col-md-3">
+        <div class="gallery-item"> <img src="/static/img/gallery/03.jpg" class="img-responsive" alt=""></div>
+      </div>
+      <div class="col-xs-6 col-md-3">
+        <div class="gallery-item"> <img src="/static/img/gallery/04.jpg" class="img-responsive" alt=""></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Team Section -->
+<div id="team">
+  <div class="container">
+    <div id="row">
+      <div class="col-md-6">
+        <div class="col-md-10 col-md-offset-1">
+          <div class="section-title">
+            <h2>Meet Our Chef</h2>
+          </div>
+          <p>Chef Pillai is a culinary virtuoso whose expertise in the kitchen has made a lasting impression on gastronomy enthusiasts. With a career spanning several decades, Chef Pillai has become synonymous with culinary excellence, known for crafting innovative and delectable dishes that tantalize the taste buds. His commitment to using high-quality, fresh ingredients and a meticulous attention to detail sets him apart in the culinary world.</p>
+          <p>Chef Pillai's culinary creations not only showcase his technical prowess but also reflect his passion for pushing the boundaries of flavor. Whether in a fine dining establishment or a casual setting, Chef Pillai's culinary magic continues to leave a lasting and delightful imprint on the palates of those fortunate enough to experience his creations</p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="team-img"><img src="/static/img/chef.jpg" alt="..."></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Contact Section -->
+<div id="contact" class="text-center">
+  <div class="container text-center">
+    <div class="col-md-4">
+      <h3>Reservations</h3>
+      <div class="contact-item">
+        <p>Please call</p>
+        <p>(887) 654-3210</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <h3>Address</h3>
+      <div class="contact-item">
+        <p>4321 California St,</p>
+        <p>San Francisco, CA 12345</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <h3>Opening Hours</h3>
+      <div class="contact-item">
+        <p>Mon-Thurs: 10:00 AM - 11:00 PM</p>
+        <p>Fri-Sun: 11:00 AM - 02:00 AM</p>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="container">
+    <div class="section-title text-center">
+      <h3>Send us a message</h3>
+    </div>
+    <div class="form-container">
+      <h2>Submit a Message</h2>
+      <form method="post">
+          {% csrf_token %}
+          <label for="id_name">Name:</label>
+          {{ form.name }}
+          
+          <label for="id_email">Email:</label>
+          {{ form.Email }}
+          
+          <label for="id_message">Message:</label>
+          {{ form.content }}
+
+          <button type="submit" class="btn btn-custom btn-lg">Send Message</button>
+      </form>
+  </div> -->
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="footer">
+  <div class="container text-center">
+    <div class="col-md-6">
+      <p>&copy; 2017 Gusto. All rights reserved. Design by <a href="http://www.templatewire.com" rel="nofollow">TemplateWire</a></p>
+    </div>
+    <div class="col-md-6">
+      <div class="social">
+        <ul>
+          <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+          <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+          <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript" src="/static/js/jquery.1.11.1.js"></script>
+<script type="text/javascript" src="/static/js/bootstrap.js"></script>
+<script type="text/javascript" src="/static/js/SmoothScroll.js"></script>
+<script type="text/javascript" src="/static/js/jqBootstrapValidation.js"></script>
+<script type="text/javascript" src="/static/js/contact_me.js"></script>
+<script type="text/javascript" src="/static/js/main.js"></script>
+<script>
+  window.addEventListener("load", () => {
+      const loader =document.querySelector(".loader");
+
+      loader.classList.add("loader--hidden");
+
+      loader.addEventListener("transitionend", () => {
+          document.body.removeChild(loader);
+      });
+  });
+</script>  
+</body>
+</html>

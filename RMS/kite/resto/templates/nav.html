@@ -1,0 +1,117 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+
+        #booking-button {
+            background-color:transparent;
+            color: #EEEEEE;
+            font: 15px "open sans",serif;
+            margin: 0px 40px;
+            padding: 5px 0px;      
+        }
+        .offcanvas-body {
+            background-color: white;
+            color: black;
+            padding: 20px; /* Added padding for better appearance */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 90%;
+        }
+        .offcanvas-heading {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            font:  "open sans",serif;
+        }
+        .logout-button {
+            margin-top: auto; /* Push the button to the bottom */
+        }
+        .offcanvas-body {
+        padding: 20px; /* Adjust the padding as needed */
+    }
+
+    .offcanvas-heading {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    .booking-details {
+        text-align: center;
+        border: 1px solid #ccc;
+        padding: 20px;
+        border-radius: 10px;
+        background-color: #f8f8f8;
+    }
+
+    .date-time-box {
+        display: inline-block;
+        margin-bottom: 500px;
+    }
+
+    .date, .time {
+        font-weight: bold;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        margin-right: 10px;
+        
+    }
+
+    .btn-cancel {
+        margin-top: 20px;
+        margin-left: 10px;
+        
+    }
+
+    .btn {
+        margin-top: 20px;
+        font-size: 1px;  
+    }
+
+    .booking-details1 {
+        text-align: center;
+    }
+    </style>
+
+<link rel="shortcut icon" href="/static/img/favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="/static/img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/static/img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/static/img/apple-touch-icon-114x114.png">
+
+<link rel="stylesheet" type="text/css"  href="/static/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="/static/fonts/font-awesome/css/font-awesome.css">
+
+<link rel="stylesheet" type="text/css"  href="/static/css/style.css">
+<link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Rochester" rel="stylesheet">
+</head>
+<body>
+    <a class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling" id="booking-button">Hi, {{user.username}}</a>
+
+<div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasScrollingLabel">{{user.username}}</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <p>Try scrolling the rest of the page to see this option in action.</p>
+  </div>
+</div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="/static/js/jquery.1.11.1.js"></script>
+    <script type="text/javascript" src="/static/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/static/js/SmoothScroll.js"></script>
+    <script type="text/javascript" src="/static/js/jqBootstrapValidation.js"></script>
+    <script type="text/javascript" src="/static/js/contact_me.js"></script>
+    <script type="text/javascript" src="/static/js/main.js"></script>
+  </body>
+</html>

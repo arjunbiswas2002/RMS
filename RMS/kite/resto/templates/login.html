@@ -1,0 +1,208 @@
+{% load static %}
+
+{% block styles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resto login</title>
+    <style>
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.75s, visibility 0.75s;
+
+        }
+        .loader--hidden {
+            opacity: 0;
+            visibility: hidden;
+
+        }
+
+        .loader::after{
+            content: "";
+            width: 75px;
+            height: 75px;
+            border: 15px solid #dddddd;
+            border-top-color: #009578;
+            border-radius: 50%;
+            animation: loading 0.75s ease infinite;
+
+        }
+
+        @keyframes loading {
+            from { transform: rotate(0turn) }
+            to { transform: rotate(1turn) }
+        }
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-image: url('{% static "bgimage.jpg" %}');
+            background-size: cover;
+            background-position: center;
+            color: #333;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+    
+        .container {
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: -250px;
+        }
+    
+        .logo img {
+            width: 120px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+    
+        h1 {
+            font-family: 'Pacifico', cursive;
+            color: #98bd11; /* Coral Red */
+        }
+    
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9; /* Light Gray */
+            color: #555; /* Dark Gray */
+        }
+    
+        button {
+            width: 100%;
+            background-color: #98bd11; /* Coral Red */
+            color: #fff;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    
+        button:hover {
+            background-color: #bbe32d; /* Darker Coral Red on hover */
+        }
+    
+        p {
+            margin-top: 15px;
+        }
+    
+        a {
+            color: #e44d26; /* Coral Red */
+            text-decoration: none;
+        }
+    
+        a:hover {
+            text-decoration: underline;
+        }
+    
+        .toggle-button {
+            color: #e44d26; /* Coral Red */
+            cursor: pointer;
+        }
+    
+        .register-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+    
+        .card {
+            max-width: 400px;
+        }
+    
+        .card-header {
+            background-color: #e44d26; /* Coral Red */
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+        }
+    
+        .card-body {
+            padding: 30px;
+        }
+    
+        .alert-danger {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #f5c6cb;
+            border-radius: 4px;
+        }
+    </style>
+    
+</head>
+{% endblock %}
+
+{% block content %}
+<div class="register-container">
+    <div class="card">
+      <div class="card-body">
+<body>
+    <div class="loader"></div>
+    <div class="container" id="login">
+        <h1>Craving something special?</h1>
+        {% if error_message %}
+        <div class="alert alert-danger" role="alert">{{ error_message }}</div>
+        {% endif %}
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" id="username" name="username" required>
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" name="password" required>
+            </div>
+            <button type="submit">Log In</button>
+        </form>
+        <p>Don't have an account? <a href="/resto/signup/">Sign Up</a></p>
+        <p>forgot password? <a href="{% url 'password_reset' %}">reset password</a></p>
+    </div>
+
+    <script>
+        window.addEventListener("load", () => {
+            const loader =document.querySelector(".loader");
+
+            loader.classList.add("loader--hidden");
+
+            loader.addEventListener("transitionend", () => {
+                document.body.removeChild(loader);
+            });
+        });
+        function toggleForm(formId) {
+            const loginForm = document.getElementById('login');
+
+            if (formId === 'login') {
+                loginForm.style.display = 'block';
+            }
+        }
+    </script>
+    {% endblock %}
+</body>
+</html>    
